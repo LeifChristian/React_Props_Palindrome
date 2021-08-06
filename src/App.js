@@ -1,25 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import Second from "./second";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react'
+
+export class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      Numbers: ".", ReverseNumbers: String
+  }
+this.onNumberChange = this.onNumberChange.bind(this);
+
+  }
+
+onNumberChange = (event) => {
+let anus = event;
+let myAnus = this.state.Numbers
+this.setState({Numbers: anus})
+// if(anus.length > 1) {}
+let reverseAnus = myAnus.toString().split('').reverse().join('');
+
+this.setState({ReverseNumbers: reverseAnus}); 
+
+
+// alert(reverseAnus);
+
 }
 
-export default App;
+  render() {
+    return (
+      <div>
+       Palindrome
+        <Second Numbers={this.state.Numbers}
+        ReverseNumbers={this.state.ReverseNumbers}
+        onNumberChange={this.onNumberChange}/>
+        
+      </div>
+    )
+  }
+}
+
+export default App
